@@ -93,7 +93,7 @@ void GlobedGJBGL::setupPreInit(GJGameLevel* level, bool editor) {
         /* initialize modules */
 
         // discord rpc
-        if (Loader::get()->isModLoaded("techstudent10.discord_rich_presence")
+        if (Loader::get()->isModLoaded("cps.discord_rich_presence")
             && settings.globed.useDiscordRPC)
         {
             this->addModule<DiscordRpcModule>();
