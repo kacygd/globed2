@@ -60,7 +60,7 @@ bool GlobedSettingCell::init(void* settingStorage, Type settingType, const char*
             inpCheckbox->toggle(*(bool*)(settingStorage));
         } break;
         case Type::DiscordRPC: {
-            bool possible = Loader::get()->isModLoaded("techstudent10.discord_rich_presence");
+            bool possible = Loader::get()->isModLoaded("cps.discord_rich_presence");
             float opacity = possible ? 1.f : 0.5f;
 
             Build<CCMenuItemToggler>(CCMenuItemToggler::createWithStandardSprites(this, menu_selector(GlobedSettingCell::onCheckboxToggled), 1.0f))
