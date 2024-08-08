@@ -33,7 +33,7 @@ void DiscordRpcModule::postDRPCEvent() {
     auto state = fmt::format("{} by {}", std::string(m_level->m_levelName), (isRobTopLevel) ? "RobTopGames" : std::string(m_level->m_creatorName));
 
     using SetRPCEvent = geode::DispatchEvent<bool>;
-    SetRPCEvent("techstudent10.discord_rich_presence/set_default_rpc_enabled", false).post();
+    SetRPCEvent("cps.discord_rich_presence/set_default_rpc_enabled", false).post();
 
     using UpdateRPCEvent = geode::DispatchEvent<std::string>;
     auto json = matjson::Value(matjson::Object({
@@ -49,11 +49,11 @@ void DiscordRpcModule::postDRPCEvent() {
         {"joinSecret", std::to_string(m_level->m_levelID.value())},
         {"partyMax", gameLayer->m_fields->players.size() + 1}
     })).dump();
-    UpdateRPCEvent("techstudent10.discord_rich_presence/update_rpc", json).post();
+    UpdateRPCEvent("cps.discord_rich_presence/update_rpc", json).post();
 }
 
 void DiscordRpcModule::onQuit() {
     // report back to the RPC mod that it can takeover again
     using SetRPCEvent = geode::DispatchEvent<bool>;
-    SetRPCEvent("techstudent10.discord_rich_presence/set_default_rpc_enabled", true).post();
+    SetRPCEvent("cps.discord_rich_presence/set_default_rpc_enabled", true).post();
 }
